@@ -180,3 +180,61 @@ void Destroy(pila *s)
 	}
 	return;
 }
+
+/*
+Ejercicio1
+*/
+
+/*
+Operacion 01: 	Operación de consulta 
+elemento Element (pila *s, n);
+
+Descripción: 	Retorna el elemento en de la pocicion "n" de la pila como desde 1 el más profundo hasta el
+				tope de la pila
+Recibe: 		pila *s (Referencia a la pila "s" a operar), int n (Pocicion del elemento)
+Devuelve: 		Elemento en la pocicion "n"
+Observaciones: 	Si el usuario ingresa un numero "n" fuera del rango, retornara error
+Autor: 			Morales Martínez Víctor Hugo
+*/
+/*
+elemento Element (pila *s, int n){
+	elemento e;
+	int size = Size(s);
+	s->tope = 0;
+
+	for (int i = 1; i <= size; i++)
+	{
+		s->tope++; 
+	}
+	e = s->tope->e;
+	s->tope = size;
+	return e;	
+}
+*/
+/*
+Operacion 02: 	Operación Modificadora 
+void Flip(pila *s) 
+
+Descripción: 	Voltea los elemntos de una pila
+Recibe: 		pila *s (Referencia a la pila "s" a operar), int n (Pocicion del elemento)
+Devuelve: 		-
+Observaciones: 	Esta operación no causa errores, siempre es posible hacer un flip
+Autor: 			Morales Martínez Víctor Hugo
+*/
+void Flip(pila *s){
+	int size = Size(s)-1; 
+	elemento arregloAux[size];
+	elemento e;
+	for (int i = 0; i <= size; i++)
+	{
+		e = Pop(s);
+		arregloAux[i] = e;
+	}
+	
+	for (int i = 0; i <= size; i++)
+	{
+		e = arregloAux[i];
+		Push(s,e);
+	}
+	return;	
+}

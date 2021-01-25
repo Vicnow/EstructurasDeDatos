@@ -30,7 +30,7 @@ typedef struct elemento
 {
 	//Variables de la estructura "elemento" (El usuario puede modificar)
 	char c;
-	//***
+	int i;
 	//***
 	//***
 }elemento;
@@ -58,3 +58,7 @@ boolean Empty(pila *s);				//Vacia (Preguntar si la pila esta vacia)
 elemento Top(pila *s);				//Tope (Obtener el "elemento" del tope de la pila si extraerlo de la pila)
 int Size(pila *s);					//Tamaño de la pila (Obtener el número de elementos en la pila)
 void Destroy(pila *s);				//Elimina pila (Borra a todos los elementos y a la pila de memoria)
+elemento Element(pila *s, int n);	//Elento en pocicion de la pila(Retorna elemento en una pocicion dada)
+void Flip(pila *S);					//Voltear (Voltea una pila)
+void bubbleSortStack(elemento a[], int n);
+
