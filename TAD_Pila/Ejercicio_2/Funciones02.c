@@ -23,9 +23,9 @@ COMPILACIÓN PARA GENERAR EL CÓDIGO OBJETO: gcc TADPilaDin.c -c
 
 //DEFINICIÓN DE FUNCIONES
 
-void bubbleSortStack(elemento a[], int n)
-{
+void bubbleSortStack(elemento a[], int n){
     pila pila1;
+    Initialize(&pila1);
      
     // Push all elements of array in 1st stack
     for(int i = 0; i < n; i++) 
@@ -34,6 +34,7 @@ void bubbleSortStack(elemento a[], int n)
     }
  
     pila pila2;
+    Initialize(&pila2);
  
     for(int i = 0; i < n; i++)
     {
@@ -107,3 +108,21 @@ void bubbleSortStack(elemento a[], int n)
     }
     printf("]");
 } 
+
+pila sortStack(pila *s){
+    pila pilaTemp;
+    Initialize(&pilaTemp);
+
+    while (!Empty(s))
+    {
+        elemento tmp = Pop(s);
+
+        while (!Empty(&pilaTemp)&& Top(&pilaTemp).i > tmp.i)
+        {
+            Push(s,Pop(&pilaTemp));
+        }
+        
+        Push(&pilaTemp,tmp);
+    }
+    return pilaTemp;
+}
