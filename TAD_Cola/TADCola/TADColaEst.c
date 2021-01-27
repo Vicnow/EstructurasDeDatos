@@ -17,8 +17,9 @@ COMPILACIÓN PARA GENERAR EL CÓDIGO OBJETO: gcc -c TADColaEst.c
 
 //LIBRERAS
 #include "TADColaEst.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 //DEFINICIÓN DE FUNCIONES
 
@@ -210,6 +211,32 @@ void Destroy(cola * c)
 Ejercicio4
 */
 
+/*
+Operacion 02: 	Operación Modificadora 
+int Search(cola *c, elemento e) 
+
+Descripción: 	Retorna el número de elemento en la cola (de 1 a Size) 
+Recibe: 		cola *c , elemento e(Referencia a la cola "c" a operar)
+Devuelve: 		int - posicion del elemento en la cola, 0 si no se encuentra
+Observaciones: 	Esta operación no causa errores.
+Autor: 			Morales Martínez Víctor Hugo
+*/
+int Search(cola *c, elemento e){
+	elemento eAux;
+	int flag;
+	for(int i=1;i<=Size(c);i++)
+	{
+		eAux = Element(c,i);
+		if (sizeof(e) == sizeof(eAux))
+		{
+			if (e.n == eAux.n)
+			{
+				return i;
+			}
+		}
+	}
+	return 0;
+}
 /*
 Operacion 02: 	Operación Modificadora 
 void Flip(cola *c) 

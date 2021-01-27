@@ -51,7 +51,9 @@ int main(void)
 	printf("\n");
 
 	//Volteando la cola Flip()
+	printf("\nCola Volteada\n");
 	Flip(&c);
+
 	//Mostrar los numeros a la cola
 	printf("\n");
 	for(i=1;i<=Size(&c);i++)
@@ -60,6 +62,14 @@ int main(void)
 		printf("%d\t",e.n);
 	}
 	printf("\n");
+
+	//Buscando el elemento
+	printf("\nBusca un elemento en la cola\n");
+	printf("\nDijita el elemento:\n");
+	scanf("%d",&e.n);
+	int pos = Search(&c,e);
+	printf("\nPosicion del elemento:\t%i\n",pos);
+
 
 	//Desencolar los numeros de la cola
 	while(!Empty(&c))
