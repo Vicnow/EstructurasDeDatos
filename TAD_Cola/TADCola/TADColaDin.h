@@ -59,3 +59,5 @@ elemento Final(cola *c);			//Final (Final): Recibe una cola y retorna el element
 elemento Element(cola *c, int i); 	// Recibe una cola y un número de elemento de 1 al tamaño de la cola y retorna el elemento de esa posición.
 int Size(cola *c);					//Tamaño (Size): Retorna el tamaño de la cola 	
 void Destroy(cola *c);				//Eliminar cola (Destroy): Recibe una cola y la libera completamente.
+int Search(cola *c, elemento e);	//Devulve la posicion de un elemento en la cola
+void Flip(cola *c);					//Recibe una cola y la voltea

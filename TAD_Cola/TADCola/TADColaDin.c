@@ -256,3 +256,59 @@ void Destroy(cola * c)
 	
 	return;
 }
+
+/*
+Ejercicio4
+*/
+
+/*
+Operacion 02: 	Operación Modificadora 
+int Search(cola *c, elemento e) 
+
+Descripción: 	Retorna el número de elemento en la cola (de 1 a Size) 
+Recibe: 		cola *c , elemento e(Referencia a la cola "c" a operar)
+Devuelve: 		int - posicion del elemento en la cola, 0 si no se encuentra
+Observaciones: 	Esta operación no causa errores.
+Autor: 			Morales Martínez Víctor Hugo
+*/
+int Search(cola *c, elemento e){
+	elemento eAux;
+	int flag;
+	for(int i=1;i<=Size(c);i++)
+	{
+		eAux = Element(c,i);
+		if (sizeof(e) == sizeof(eAux))
+		{
+			if (e.n == eAux.n)
+			{
+				return i;
+			}
+		}
+	}
+	return 0;
+}
+/*
+Operacion 02: 	Operación Modificadora 
+void Flip(cola *c) 
+
+Descripción: 	Voltea los elemntos de una cola
+Recibe: 		cola *c (Referencia a la cola "c" a operar)
+Devuelve: 		-
+Observaciones: 	Esta operación no causa errores, siempre es posible hacer un flip
+Autor: 			Morales Martínez Víctor Hugo
+*/
+void Flip(cola *c){
+	elemento e;
+	int sizeCola = Size(c);
+	elemento elementos[sizeCola];
+	for (int i = 1; i <= sizeCola; i++)
+	{
+		e = Dequeue(c);
+		elementos[i] = e;
+	}
+	for (int i = sizeCola; i >=1; i--)
+	{
+		e = elementos[i];
+		Queue(c,e);
+	}
+}
