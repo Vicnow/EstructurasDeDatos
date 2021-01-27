@@ -69,6 +69,9 @@ int main(void)
 
 	//Destruir la cola
 	Destroy(&c);
+
+	printf("\n\nAutor: Morales Martinez Victor Hugo");
+	printf("\nRepositorio Git: github.com/Vicnow/EstructurasDeDatos\n");
 	
 	return 0;
 }
