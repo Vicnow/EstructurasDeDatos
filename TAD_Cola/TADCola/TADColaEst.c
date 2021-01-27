@@ -222,17 +222,15 @@ Observaciones: 	Esta operación no causa errores.
 Autor: 			Morales Martínez Víctor Hugo
 */
 int Search(cola *c, elemento e){
-	elemento eAux;
+	elemento aux;
 	int flag;
 	for(int i=1;i<=Size(c);i++)
 	{
-		eAux = Element(c,i);
-		if (sizeof(e) == sizeof(eAux))
+		aux = Element(c,i);
+		flag=memcmp(&aux,&e,sizeof(elemento));
+		if (flag == 0)
 		{
-			if (e.n == eAux.n)
-			{
-				return i;
-			}
+			return i;
 		}
 	}
 	return 0;
