@@ -17,7 +17,7 @@ EJECUCIÓN: PruebaBasica.exe (En Windows) - ./PruebaBasica (En Linux)
 
 //LIBRERAS
 #include <stdio.h>
-#include "TADCola/TADColaEst.h" 	//Si se usa la implemtentación dinámica (TADColaDin.c)
+#include "../TADCola/TADColaEst.h" 	//Si se usa la implemtentación dinámica (TADColaDin.c)
 //#include "TADCola/TADColaDin.h" 	//Si se usa la implemtentación estática (TADColaEst.c|TADColaEstCirc.c)
 
 //PROGRAMA PRINCIPAL
@@ -41,6 +41,17 @@ int main(void)
 		Queue(&c,e);
 	}
 	
+	//Mostrar los numeros a la cola
+	printf("\n");
+	for(i=1;i<=Size(&c);i++)
+	{
+		e=Element(&c,i);
+		printf("%d\t",e.n);
+	}
+	printf("\n");
+
+	//Volteando la cola Flip()
+	Flip(&c);
 	//Mostrar los numeros a la cola
 	printf("\n");
 	for(i=1;i<=Size(&c);i++)

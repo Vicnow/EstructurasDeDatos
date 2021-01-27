@@ -205,3 +205,33 @@ void Destroy(cola * c)
 {
 	Initialize(c);	//Inicilizar la cola (c->frente = c->final =-1 c->num_elem=0)
 }
+
+/*
+Ejercicio4
+*/
+
+/*
+Operacion 02: 	Operación Modificadora 
+void Flip(cola *c) 
+
+Descripción: 	Voltea los elemntos de una cola
+Recibe: 		cola *c (Referencia a la cola "c" a operar)
+Devuelve: 		-
+Observaciones: 	Esta operación no causa errores, siempre es posible hacer un flip
+Autor: 			Morales Martínez Víctor Hugo
+*/
+void Flip(cola *c){
+	elemento e;
+	int sizeCola = Size(c);
+	elemento elementos[sizeCola];
+	for (int i = 1; i <= sizeCola; i++)
+	{
+		e = Dequeue(c);
+		elementos[i] = e;
+	}
+	for (int i = sizeCola; i >=1; i--)
+	{
+		e = elementos[i];
+		Queue(c,e);
+	}
+}
