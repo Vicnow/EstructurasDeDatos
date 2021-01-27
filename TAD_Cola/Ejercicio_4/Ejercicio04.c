@@ -1,24 +1,20 @@
 /*
-AUTOR: Edgardo Adrián Franco Martínez (C) Septiembre 2012
-VERSIÓN: 1.3
+AUTOR: Moraes Martinez Victor Hugo
 
-DESCRIPCIÓN: Ejemplo basico del uso de una cola 
-el cuál encola 10 numeros y los desencola.
+DESCRIPCIÓN: Programa del Ejercicio 4
 
-OBSERVACIONES: Se puede emplear la libreria TADColaEst.h, TADPilaEstCir.h o TADColaDin.h implementadas
-en clase. Ambas estructuras elemento, ya sea la de las implementaciónes estáticas o dinámica deberán 
-tener un campo int n;
+OBSERVACIONES: 
 
-COMPILACIÓN: 	gcc -o PruebaBasica PruebaBasica.c TADCola/TADCola(Din|Est|EstCirc).o (Si se tiene el objeto de la implementación)
-				gcc -o PruebaBasica PruebaBasica.c TADCola/TADCola(Din|Est|EstCirc).c (Si se tiene el fuente de la implementación)
+COMPILACIÓN: 	gcc -o Ejercicio04 Ejercicio04.c ../TADCola/TADCola(Din|Est|EstCirc).o (Si se tiene el objeto de la implementación)
+				gcc -o Ejercicio04 Ejercicio04.c ../TADCola/TADCola(Din|Est|EstCirc).c (Si se tiene el fuente de la implementación)
 
-EJECUCIÓN: PruebaBasica.exe (En Windows) - ./PruebaBasica (En Linux)
+EJECUCIÓN: Ejercicio04.exe (En Windows) - ./Ejercicio04 (En Linux)
 */
 
 //LIBRERAS
 #include <stdio.h>
 #include "../TADCola/TADColaEst.h" 	//Si se usa la implemtentación dinámica (TADColaDin.c)
-//#include "TADCola/TADColaDin.h" 	//Si se usa la implemtentación estática (TADColaEst.c|TADColaEstCirc.c)
+//#include "../TADCola/TADColaDin.h" 	//Si se usa la implemtentación estática (TADColaEst.c|TADColaEstCirc.c)
 
 //PROGRAMA PRINCIPAL
 int main(void)
