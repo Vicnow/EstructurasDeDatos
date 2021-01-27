@@ -50,3 +50,5 @@ int Size(pila *s);					//Tamaño de la pila (Obtener el número de elementos en 
 void Destroy(pila *s);				//Elimina pila (Borra a todos los elementos y a la pila de memoria)
 elemento Element(pila *s, int n);	//Elento en pocicion de la pila(Retorna elemento en una pocicion dada)
 void Flip(pila *S);					//Voltear (Voltea una pila)
+void infijoPosfijo(char c[],int size);
+void infijoPosfijoPasos(char c[],int size);
