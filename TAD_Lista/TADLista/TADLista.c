@@ -124,19 +124,17 @@ posicion ElementPosition(lista *l, int n)
 
 elemento Element(lista *l, int n)
 {
-	elemento r;
     posicion aux;
 	int i;
-	
-	if(n>0&&n<=Size(l))
+	//printf("\nDentro de funcion:\n");
+	//printf("\nTamanio:\t%i\n",Size(l));
 	{
-		aux=l->frente;
-		for(i=2;i<=n;i++)
-			aux=aux->siguiente;
+		aux = l->frente;
+		for(int i = 1; i < n; i++)
+			aux = aux->siguiente;
 		return aux->e;		
 	}
-	else
-		exit(1);
+	exit(1);
 }
 
 /*
@@ -194,26 +192,46 @@ Observaciones: 	-
 Autor: 			Morales Martínez Víctor Hugo
 */
 void Insert (lista * l, posicion p, elemento e, boolean b){
-	posicion anterior = Previous(l,p);
-	posicion siguiente = Following(l,p);
-	if (b == TRUE)
+	nodo *aux,*aux2;
+	aux = malloc(sizeof(nodo));
+	if(aux==NULL)
 	{
-		l->tamanio++;
-		if (anterior == NULL)
-		{
-			Final(l)->e = e;
+		printf("\nERROR: No se puede crear un nuevo nodo");
+		exit(1);		
+	}
+	aux->e = e;
+	if(!ValidatePosition(l,p)){
+		if (l->final!=NULL){
+			aux->siguiente = l->frente;
+			l->frente = aux;
 		}else{
-			Previous(l,p)->e = e;
+			aux->siguiente=l->frente;
+			l->frente=aux;
+			l->final=aux;
 		}
 	}else{
-		l->tamanio++;
-		if (siguiente == NULL)
-		{
-			First(l)->e = e;
+		if (b == FALSE){
+			if (p!=l->final){
+				aux->siguiente=p->siguiente;
+				p->siguiente=aux;
+			}else{
+				aux->siguiente=p->siguiente;
+				p->siguiente=aux;
+				l->final=aux;
+			}
 		}else{
-			Following(l,p)->e = e;
+			aux2 = Previous(l,p);
+			if (aux2==NULL){
+				aux->siguiente =l->frente;
+				l->frente = aux;
+			}else{
+				aux2->siguiente=aux;
+				aux->siguiente=p;
+			}
 		}
 	}
+	l->tamanio++;
+	return;
 }
 
 /*
@@ -229,35 +247,27 @@ Autor: 			Morales Martínez Víctor Hugo
 */
 void Add (lista *l,elemento e)
 {
-	printf("\nAgregando elemento, numero:\t%i\n",e.n);
 	nodo *aux;
-	aux=malloc(sizeof(nodo));
+	aux = malloc(sizeof(nodo));
 	if(aux==NULL)
 	{
-		printf("\nERROR: Desbordamiento de Lista");
+		printf("\nERROR: No se puede crear un nuevo nodo");
 		exit(1);		
 	}
+	aux ->siguiente = NULL;
 	aux->e = e;
-	
-	if (Empty(l)==1)
+	if (Size(l)==0) //Si la pila esta vacia
 	{
-		printf("Insertando elemento en fila vacia\n");
 		l->final = aux;
 		l->frente = aux;
-		l->tamanio++;
-	}else{
-		printf("Insertando elemento\n");
-		printf("Elemento final: %i\n",l->final->e.n);
-		printf("Elemento : %i\n",aux->e.n);
-		aux->siguiente = l->final;
-		l->final= aux;
-		l->tamanio++;
-
-		//El elemento del final apuntará al nuevo elemento 		
+		
+	}else{ //Si la lista no es vacia
 		l->final->siguiente = aux;
-		//El final de la lista apuntará al nuevo elemento
 		l->final = aux;
 	}
+	//printf("\nElemento agregado: \t%i\n",l->final->e.n);
+	l->tamanio++;
+	return;
 }
 
 /*
@@ -272,15 +282,42 @@ Observaciones: 	La lista es o vacia y la posicion P es valida
 Autor: 			Morales Martínez Víctor Hugo
 */
 void Remove (lista *l,posicion p){
-	if (Empty(l))
+	posicion aux;
+	if (!Empty(l) && ValidatePosition(l,p))
 	{
+		//Si la p es frente y final (Solo hay uno en la lista)
+		if(p==l->final&&p==l->frente)
+		{
+			free(p);
+			l->final=NULL;
+			l->frente=NULL;
+			l->tamanio=0;
+			l->tamanio--;
+		}
+    
+        else if (p == l->frente) //Si el elemento que se quiere remover es el frente.
+        {
+            l->frente = l->frente->siguiente;
+            free(p);
+			l->tamanio--;
+        }else if(p == l->final){ //Si el elemento que se quiere remover es el final.
+            aux = Previous(l,p);
+			aux->siguiente = NULL;
+			l->final = aux;
+            free(p);
+			l->tamanio--;
+        }else // Si se quiere remover cualquier otro elemento.
+        {
+            aux = Previous(l,p);
+            aux->siguiente = p->siguiente; 
+            free(p);
+			l->tamanio--;
+        }
+	}else{
 		printf("\nNo se puede eliminar una posicion de una lista vacia\n");
 		exit(1);
 	}
-	
-	Previous(l,p)->siguiente = Following(l,p);
-	p->siguiente = NULL;
-	l->tamanio--;
+	return;
 }
 
 /*
@@ -301,5 +338,9 @@ void Replace (lista *l,posicion p, elemento e){
 		printf("\nNo se puede Remplazar un elemento de una lista vacia\n");
 		exit(1);
 	}
-	p->e = e;
+	if (ValidatePosition(l,p))
+	{
+		p->e = e;
+	}
+	return;
 }
