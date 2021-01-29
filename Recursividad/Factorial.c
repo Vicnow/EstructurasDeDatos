@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int factorial(long n);
+long factorial(long n);
 int main(int argc, char const *argv[])
 {
     long flag;
@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-int factorial(long n){
+long factorial(long n){
     if (n == 0){
         return 1; //Caso Base
     }else{
